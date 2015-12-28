@@ -1,4 +1,5 @@
 = render "application/header"
+= render "document_changes", :id => @document.id
 %h1= @document.title
-%p= @document.body
+%p#document_body= @document.body
 =link_to "Edit Document", edit_document_path(@document), :class => "pure-button pure-button-primary"

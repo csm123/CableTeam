@@ -1,0 +1,9 @@
+:javascript
+  App.cable.subscriptions.create({
+    channel: "DocumentChannel",
+    id: #{id}
+  }, {
+    received: function(data) {
+      $("#document_body").html(data);
+    }
+  });
