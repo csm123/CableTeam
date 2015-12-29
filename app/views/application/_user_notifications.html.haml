@@ -1,0 +1,10 @@
+- if current_user.present?
+  :javascript
+    App.cable.subscriptions.create({
+      channel: "UserNotificationsChannel",
+      id: #{current_user[:id]}
+    }, {
+      received: function(data) {
+        alert(data);
+      }
+    });

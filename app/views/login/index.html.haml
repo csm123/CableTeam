@@ -1,0 +1,4 @@
+%h1 Who are you?
+%ul
+  - all_users.each do |user|
+    %li= link_to user[1], login_path(:user_id => user[0]), :method => :post

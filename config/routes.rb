@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
 
   resources :documents
+
+  get "login", to: "login#index"
+  post "login", to: "login#login"
 end
