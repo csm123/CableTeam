@@ -1,9 +1,17 @@
 :javascript
   App.cable.subscriptions.create({
-    channel: "DocumentChannel",
+    channel: "DocumentChangesChannel",
     id: #{id}
   }, {
     received: function(data) {
       $("#document_body").html(data);
+    }
+  });
+  App.cable.subscriptions.create({
+    channel: "DocumentLocksChannel",
+    id: #{id}
+  }, {
+    received: function(data) {
+      alert(data);
     }
   });

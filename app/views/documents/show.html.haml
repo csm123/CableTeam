@@ -2,4 +2,4 @@
 = render "document_changes", :id => @document.id
 %h1= @document.title
 %p#document_body= @document.body
-=link_to "Edit Document", edit_document_path(@document), :class => "pure-button pure-button-primary"
+= render "edit_document_button", :locked => @locked, :editor => @editor

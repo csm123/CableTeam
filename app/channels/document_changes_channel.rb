@@ -1,4 +1,4 @@
-class DocumentChannel < ApplicationCable::Channel
+class DocumentChangesChannel < ApplicationCable::Channel
   def subscribed
     stream_from "document_changes_#{params[:id]}"
   end

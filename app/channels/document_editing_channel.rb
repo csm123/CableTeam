@@ -4,6 +4,6 @@ class DocumentEditingChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    Lock.stop(:document_id => params[:document_id], :user_id => current_user)
+    Lock.stop(:document_id => params[:id], :user_id => current_user)
   end
 end

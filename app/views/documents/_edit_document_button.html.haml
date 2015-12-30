@@ -1,0 +1,4 @@
+- if locked
+  %p #{editor} is editing
+- else
+  =link_to "Edit Document", edit_document_path(@document), :class => "pure-button pure-button-primary"

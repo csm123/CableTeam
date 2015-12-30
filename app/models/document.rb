@@ -7,6 +7,12 @@ class Document < ApplicationRecord
     locks.present?
   end
 
+  def unlock
+    locks.each do |lock|
+      lock.stop
+    end
+  end
+
   private
 
   def broadcast_change

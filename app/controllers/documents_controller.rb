@@ -11,6 +11,11 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find(params[:id])
+    locks = @document.locks
+    if locks.present?
+      @locked = true
+      @editor = locks.last.user_id
+    end
   end
 
   def edit
