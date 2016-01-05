@@ -5,7 +5,7 @@ class Lock < ApplicationRecord
 
   def self.start(options)
     document = Document.find(options[:document_id])
-    if document.present?
+    if document.present? && document.locks.blank?
       Lock.create!(:document_id => document.id, :user_id => options[:user_id])
       ActionCable.server.broadcast "document_locks_#{options[:document_id]}", "#{options[:user_id]} is editing"
     end
@@ -16,6 +16,7 @@ class Lock < ApplicationRecord
     locks.each do |lock|
       lock.stop
     end
+    ActionCable.server.broadcast "document_locks_#{options[:document_id]}", "Unlocked"
   end
 
   def stop
